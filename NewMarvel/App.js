@@ -12,6 +12,7 @@ import CharacterDetail from "./src/screens/CharacterDetail/CharacterDetail";
 import ComicDetail from "./src/screens/ComicDetail/ComicDetail";
 import Login from "./src/screens/Login/Login";
 import EmailLogin from "./src/screens/EmailLogin/EmailLogin";
+import SignUp from "./src/screens/SignUp/SignUp";
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator();
 
@@ -65,6 +66,7 @@ function App () {
       <Stack.Navigator screenOptions={{headerShown:false}} >
         <Stack.Screen name="LoginScreen" component={Login} />
         <Stack.Screen name="EmailLoginScreen" component={EmailLogin} />
+        <Stack.Screen name="EmailSignUpScreen" component={SignUp} />
         <Stack.Screen name="HomeStack" component={AppTabStack} />
       </Stack.Navigator>
     </NavigationContainer>

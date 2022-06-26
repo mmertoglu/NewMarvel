@@ -5,6 +5,7 @@ export default StyleSheet.create({
         width:'80%'
     },
     input:{
+        color:'white'
     },
     text:{
         color:'white',
@@ -13,7 +14,7 @@ export default StyleSheet.create({
         flexDirection:'row',
         borderRadius:8,
         elevation:8,
-        backgroundColor:'#518cca',
+        backgroundColor:'#000000',
         marginTop:10,
         alignItems:'center',
         justifyContent:'space-between',
