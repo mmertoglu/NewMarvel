@@ -12,12 +12,13 @@ export default StyleSheet.create({
         alignItems:'center',
         alignSelf:'center',
         width:'95%',
-        marginVertical:5,
+        marginVertical:20,
         borderTopLeftRadius:100,
         borderBottomLeftRadius:100,
         paddingLeft:10,
         justifyContent:'space-between',
-        elevation:8
+        elevation:8,
+        
     },
     image: {
         width: 60,

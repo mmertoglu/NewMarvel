@@ -3,7 +3,7 @@ import { Dimensions, StyleSheet } from "react-native";
 export default StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor:'#000080'
+        backgroundColor:'#518cca'
     },
     image:{
         width:Dimensions.get('screen').width,
@@ -33,7 +33,7 @@ export default StyleSheet.create({
         color:'white'
     },
     desciption_container:{
-        backgroundColor:'tomato',
+        backgroundColor:'#504a4a',
         margin:10,
         padding:10,
         borderRadius:8,
