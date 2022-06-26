@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "239573572877",
+    "project_id": "newmarvelapp-43727",
+    "storage_bucket": "newmarvelapp-43727.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239573572877:android:1f799022b56ea59c196444",
+        "android_client_info": {
+          "package_name": "com.newmarvel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "239573572877-ckv2ktbjp233rjedljkfqvjvurfhgsfc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.newmarvel",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "239573572877-mjlntl526cac8q3kkrqsfpiqht231von.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZu2vncxIPWUIfQcqvOCr-QBlL6LIxxx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "239573572877-mjlntl526cac8q3kkrqsfpiqht231von.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

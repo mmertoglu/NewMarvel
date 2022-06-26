@@ -1,0 +1,52 @@
+import React, { useEffect, useState } from "react";
+import { View, Text, Button, FlatList, Image, TextInput } from 'react-native'
+import axios from 'axios'
+import Config from "react-native-config";
+import useFetch from '../../useFetch/useFetch'
+import CharacterCard from "../../components/CharacterCard/CharacterCard";
+import styles from './Characters.style'
+import SearchBar from '../../components/SearchBar/SearchBar'
+import HeroLottie from "../../assets/Lottie/HeroLottie";
+import StarterCharacterCard from "../../components/StarterCharacterCard/StarterCharacterCard";
+import ErrorLottie from '../../assets/Lottie/ErrorLottie'
+import CharacterDetail from "../CharacterDetail/CharacterDetail";
+const api_key = 'f10953d37850ea4cfdb4f98a0912cd4e'
+const hash = 'f9acd06a0b64e2acd93d4a4b53145d48'
+
+const Characters = ({navigation}) => {
+  const [searchedCharacter, setSearchedCharacter] = useState('')
+  const starterUrl = `${Config.API_URL_CHARACTERS}?ts=1&apikey=${api_key}&hash=${hash}&limit=20&offset=0`
+  const newUrl = `${Config.API_URL_CHARACTERS}?nameStartsWith=${searchedCharacter}&ts=1&apikey=${api_key}&hash=${hash}&limit=20&offset=0`
+  const { loading, error, data } = useFetch(newUrl)
+  const {loading  : loading2 , data : data2 } = useFetch(starterUrl)
+  
+  const handleDetail = (character) => {
+    navigation.navigate('CharacterDetailScreen',{character})
+  }
+
+  const renderItemStarter = ({item}) => <StarterCharacterCard character={item} handleDetail={handleDetail} />
+  if (loading) {
+    return <HeroLottie/>
+  }
+  if(error) {
+    return <ErrorLottie/>
+  }
+  return (
+    <View style={styles.container} >
+      <SearchBar
+        onChangeText={text => setSearchedCharacter(text)} />
+      {searchedCharacter ?
+      <FlatList
+      key={'#'}
+        data={data}
+        renderItem={renderItemStarter} />:
+        <FlatList
+        key={'_'}
+        data={data2}
+        renderItem={renderItemStarter}
+        />
+        }
+    </View>
+  )
+}
+export default Characters
