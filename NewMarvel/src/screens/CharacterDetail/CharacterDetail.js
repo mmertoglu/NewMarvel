@@ -1,13 +1,17 @@
 import React,{useState} from "react";
-import { View, Text, Image, FlatList, ActivityIndicator } from 'react-native'
+import { View, Text, Image, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native'
 import styles from './CharacterDetail.style'
 import useFetch from "../../useFetch/useFetch";
 import CharacterComicCard from "../../components/CharacterComicCard/CharacterComicCard";
 import CharacterStoryCard from '../../components/CharacterStoryCard/CharacterStoryCard'
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import database from '@react-native-firebase/database'
+import auth from '@react-native-firebase/auth'
 const api_key = 'f10953d37850ea4cfdb4f98a0912cd4e'
 const hash = 'f9acd06a0b64e2acd93d4a4b53145d48'
 
 const CharacterDetail = ({ route,navigation }) => {
+    const [isFavourite,setIsFavourite] = useState(false)
     const { character } = route.params
     const comicUrl = `${character.comics.collectionURI}?ts=1&apikey=${api_key}&hash=${hash}`
     const seriesUrl = `${character.series.collectionURI}?ts=1&apikey=${api_key}&hash=${hash}`
@@ -15,14 +19,22 @@ const CharacterDetail = ({ route,navigation }) => {
     const {data,loading,error} = useFetch(comicUrl)
     const {data : data3,loading : loading3} = useFetch(seriesUrl)
     
+    const currentUser = auth().currentUser.uid
     const renderComics = ({item}) => <CharacterComicCard comic={item} handleDetail={handleComicDetail} />
     const renderStories = ({item}) => <CharacterStoryCard story={item} />
 
     const handleComicDetail = (comic) => {
         navigation.navigate('ComicDetailScreen',{comic})
     }
+    const handlefavourite = () => {
+        setIsFavourite(true)
+        database().ref(`users/${currentUser}/favourites`).push(character)
+    }
     return (
         <View style={styles.container} >
+            <TouchableOpacity onPress={handlefavourite} style={styles.icon_container} >
+            <FontAwesome5 name="heart" size={30} color='black' solid={isFavourite} />
+            </TouchableOpacity>
             {character.thumbnail != undefined ? <Image source={{ uri: character.thumbnail.path + '.jpg' }} style={styles.image} resizeMode='stretch' />
                 : null
             }

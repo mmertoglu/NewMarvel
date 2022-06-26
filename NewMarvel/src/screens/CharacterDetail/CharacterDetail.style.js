@@ -31,5 +31,16 @@ export default StyleSheet.create({
         backgroundColor:'tomato',
         margin:10,
         padding:5
+    },
+    icon_container:{
+        backgroundColor:'white',
+        padding:10,
+        borderRadius:60,
+        position:'absolute',
+        top:20,
+        right:20,
+        width:50,
+        zIndex:1,
+        
     }
 })
