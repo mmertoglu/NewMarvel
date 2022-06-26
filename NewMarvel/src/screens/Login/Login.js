@@ -44,7 +44,6 @@ const Login = ({navigation}) => {
       }
     return(
         <View style={styles.container} >
-          <StatusBar backgroundColor={'red'} />
           <View style={styles.image_container}>
           <Image source={{uri:'https://1000logos.net/wp-content/uploads/2021/06/Marvel-Comics-logo.png'}} style={styles.image} />
           <Text style={styles.slogan_text} >Explore The Universe</Text>

@@ -43,13 +43,12 @@ const CharacterStack = () => {
             }
             return <FontAwesome name={iconName} color={color} size={24} />
         },
-        tabBarActiveTintColor: '#E05B16',
-         tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: 'white',
+         tabBarInactiveTintColor: '#d9d9d9',
          headerShown:false,
-         tabBarActiveBackgroundColor:'#000080',
-         tabBarStyle:{backgroundColor:'#000080',borderTopWidth:0}
+         tabBarActiveBackgroundColor:'red',
+         tabBarStyle:{backgroundColor:'red',borderTopWidth:0}
     })
-        
     }
       >
         <Tab.Screen name="Characters" component={CharacterStack} />
@@ -63,6 +62,7 @@ const CharacterStack = () => {
 function App () {
   return(
     <NavigationContainer>
+      <StatusBar backgroundColor={'red'} />
       <Stack.Navigator screenOptions={{headerShown:false}} >
         <Stack.Screen name="LoginScreen" component={Login} />
         <Stack.Screen name="EmailLoginScreen" component={EmailLogin} />

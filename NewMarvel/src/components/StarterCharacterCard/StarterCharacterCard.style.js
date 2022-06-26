@@ -4,10 +4,11 @@ import colors from "../../assets/colors";
 export default StyleSheet.create({
     container: {
         alignItems: 'center',
-        height: 120,
+        height: 80,
         flexDirection: 'row',
         elevation:4,
-        backgroundColor:'#E05B16',
+        borderColor:'white',
+        borderWidth:0.5,
         alignItems:'center',
         alignSelf:'center',
         width:'95%',
@@ -15,11 +16,12 @@ export default StyleSheet.create({
         borderTopLeftRadius:100,
         borderBottomLeftRadius:100,
         paddingLeft:10,
-        justifyContent:'space-between'
+        justifyContent:'space-between',
+        elevation:8
     },
     image: {
-        width: 100,
-        height: 100,
+        width: 60,
+        height: 60,
         borderRadius: 50,
     },
     text: {

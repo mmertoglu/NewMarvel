@@ -2,12 +2,12 @@ import { Dimensions, StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     container:{
-        backgroundColor:'#000080',
+        backgroundColor:'red',
         flex:1
     },
     input_container:{
         paddingHorizontal:10,
-        backgroundColor:'#9E9E9E',
+        backgroundColor:'red',
         flexDirection:'row',
         alignItems:'center',
         borderRadius:16,

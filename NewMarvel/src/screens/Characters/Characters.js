@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Button, FlatList, Image, TextInput } from 'react-native'
-import axios from 'axios'
+import { View, FlatList, } from 'react-native'
 import Config from "react-native-config";
 import useFetch from '../../useFetch/useFetch'
-import CharacterCard from "../../components/CharacterCard/CharacterCard";
 import styles from './Characters.style'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import HeroLottie from "../../assets/Lottie/HeroLottie";
 import StarterCharacterCard from "../../components/StarterCharacterCard/StarterCharacterCard";
 import ErrorLottie from '../../assets/Lottie/ErrorLottie'
-import CharacterDetail from "../CharacterDetail/CharacterDetail";
+
 const api_key = 'f10953d37850ea4cfdb4f98a0912cd4e'
 const hash = 'f9acd06a0b64e2acd93d4a4b53145d48'
 
