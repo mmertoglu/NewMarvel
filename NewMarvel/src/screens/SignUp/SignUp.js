@@ -8,13 +8,14 @@ import IonIcons from 'react-native-vector-icons/Ionicons'
 const SignUp = ({navigation}) => {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
-    const {rePassword,setRePassword} = useState('')
+    const [rePassword,setRePassword] = useState('')
 
-    const handleSignUp = () => {
+    const handleSignUp = async ()  => {
         if (email||password||rePassword !='') {
             if (password ===rePassword) {
                 try {
-                    auth().createUserWithEmailAndPassword(email,password)
+                   await auth().createUserWithEmailAndPassword(email,password)
+                    navigation.navigate('HomeStack')
                 } catch (error) {
                     console.log(error)
                 }
@@ -47,8 +48,8 @@ const SignUp = ({navigation}) => {
                 onChangeText={text => setPassword(text)} />
                  <Input
                 iconName='key'
-                placeHolder='password...'
-                headerText='Password'
+                placeHolder='re-password...'
+                headerText='Re-Password'
                 onChangeText={text => setRePassword(text)} />
             </View>
             <LoginButton
