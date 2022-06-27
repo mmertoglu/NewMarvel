@@ -13,6 +13,7 @@ import ComicDetail from "./src/screens/ComicDetail/ComicDetail";
 import Login from "./src/screens/Login/Login";
 import EmailLogin from "./src/screens/EmailLogin/EmailLogin";
 import SignUp from "./src/screens/SignUp/SignUp";
+import SeriesDetail from "./src/screens/SeriesDetail/SeriesDetail";
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator();
 
@@ -22,6 +23,7 @@ const CharacterStack = () => {
       <Stack.Screen name="CharactersScreen" component={Characters} />
       <Stack.Screen name="CharacterDetailScreen" component={CharacterDetail} />
       <Stack.Screen name="ComicDetailScreen" component={ComicDetail} />
+      <Stack.Screen name="SeriesDetailScreen" component={SeriesDetail} />
     </Stack.Navigator>
   )
 }
@@ -31,7 +33,7 @@ const CharacterStack = () => {
       screenOptions={({route}) => ({
         tabBarIcon:({focused , color , size}) => {
             let iconName;
-            if (route.name==='Characters') {
+            if (route.name==='Home') {
                 iconName='buysellads'
             }
             if (route.name==='Comics') {
@@ -51,8 +53,7 @@ const CharacterStack = () => {
     })
     }
       >
-        <Tab.Screen name="Characters" component={CharacterStack} />
-        <Tab.Screen name="Comics" component={Comics} />
+        <Tab.Screen name="Home" component={CharacterStack} />
         <Tab.Screen name="Favourites" component={Favourites} />
       </Tab.Navigator>
    

@@ -1,0 +1,64 @@
+import React, { useState } from "react";
+import { View, Text, Image, ScrollView, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native'
+import styles from './SeriesDetail.style'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import useFetch from "../../useFetch/useFetch";
+import AuthorCard from "../../components/AuthorCard/AuthorCard";
+import ComicDetailCharacterCard from "../../components/ComicDetailCharacterCard/ComicDetailCharacterCard";
+
+const api_key = 'f10953d37850ea4cfdb4f98a0912cd4e'
+const hash = 'f9acd06a0b64e2acd93d4a4b53145d48'
+
+const SeriesDetail = ({ route }) => {
+    const [iconName,setIconName] = useState('caret-down')
+    const [lines, setLines] = useState(5)
+    const { story } = route.params;
+    const authorUrl = `${story.creators.collectionURI}?ts=1&apikey=${api_key}&hash=${hash}`
+    const characterUrl = `${story.characters.collectionURI}?ts=1&apikey=${api_key}&hash=${hash}`
+    
+    const {data,loading,error} = useFetch(authorUrl)
+    const {data: data2,loading : loading2} = useFetch(characterUrl)
+    const handleShowMore = () => {
+        lines<6 ? setLines(60) : setLines(5)  
+        lines<6 ?  setIconName('caret-up')  : setIconName('caret-down')
+    }
+    const renderAuthors = ({item}) => <AuthorCard author={item}  />
+    const renderCharacters = ({item}) => <ComicDetailCharacterCard character={item} />
+    return (
+        <View style={styles.container} >
+           {story.thumbnail.path == null ? null :
+             <Image source={{ uri: story.thumbnail.path + '.jpg' }} style={styles.image} resizeMode='stretch' />}
+            <View style={styles.opacity_container} ></View>
+            <Text style={styles.title_text} >{story.title}</Text>
+            <View style={styles.body_container} >
+                <Text style={styles.author_text} >Authors</Text>
+               
+               {loading ? <ActivityIndicator color={'white'} />:
+                <FlatList
+                horizontal
+                data={data}
+                renderItem={renderAuthors}
+                />}
+                <View style={styles.line_container} ></View>
+                <Text style={styles.author_text} >Characters</Text>
+                <FlatList
+                horizontal
+                data={data2}
+                renderItem={renderCharacters}
+                />
+                <View style={styles.line_container}></View>
+                <Text style={styles.author_text} >Description</Text>
+                <View style={styles.desciption_container} >
+                    <Text numberOfLines={lines} style={styles.desciption_text} >{story.description}</Text>
+                </View>
+                <TouchableOpacity onPress={handleShowMore} style={styles.showmore_container} >
+                    <Text style={{marginRight:4,color:'#e6e6e6'}} >{lines<6 ? 'Show More' : 'Show Less'}</Text>
+                    <FontAwesome name={iconName} color='white' size={20} />
+                </TouchableOpacity>
+                
+            </View>
+        </View>
+    )
+}
+
+export default SeriesDetail;
