@@ -4,6 +4,7 @@ import database from '@react-native-firebase/database'
 import ParseContent from '../../utils/ParseContent'
 import auth from '@react-native-firebase/auth'
 import StarterCharacterCard from '../../components/StarterCharacterCard/StarterCharacterCard'
+import styles from './Favourites.style'
 const currentUser = auth().currentUser.uid
 const Favourites = () => {
     const [data,setData] =useState([])
@@ -20,7 +21,8 @@ const Favourites = () => {
 
     }
     return(
-        <View>
+        <View style={styles.container} >
+            <Text style={styles.header_text} >Favourites</Text>
             <FlatList
             data={data}
             renderItem={renderItem}
