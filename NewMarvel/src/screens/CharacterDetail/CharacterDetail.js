@@ -28,7 +28,7 @@ const CharacterDetail = ({ route,navigation }) => {
     }
     const handlefavourite = () => {
         setIsFavourite(true)
-        database().ref(`users/${currentUser}/favourites`).push(character)
+        database().ref(`users/${currentUser}/favourites/${character.id}`).set(character)
     }
     const handleStoryDetail = (story) => {
         navigation.navigate('SeriesDetailScreen',{story})
