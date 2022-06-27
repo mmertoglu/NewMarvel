@@ -17,7 +17,7 @@ const Favourites = () => {
     },[])
     const renderItem = ({item}) => <StarterCharacterCard character={item} handleDetail={as} />
     const as = () => {
-        
+
     }
     return(
         <View>

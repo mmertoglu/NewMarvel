@@ -15,13 +15,13 @@ const CharacterDetail = ({ route,navigation }) => {
     const { character } = route.params
     const comicUrl = `${character.comics.collectionURI}?ts=1&apikey=${api_key}&hash=${hash}`
     const seriesUrl = `${character.series.collectionURI}?ts=1&apikey=${api_key}&hash=${hash}`
-    console.log(comicUrl)
+ 
     const {data,loading,error} = useFetch(comicUrl)
     const {data : data3,loading : loading3} = useFetch(seriesUrl)
     
     const currentUser = auth().currentUser.uid
     const renderComics = ({item}) => <CharacterComicCard comic={item} handleDetail={handleComicDetail} />
-    const renderStories = ({item}) => <CharacterStoryCard story={item} />
+    const renderStories = ({item}) => <CharacterStoryCard story={item} handleStoryDetail={handleStoryDetail} />
 
     const handleComicDetail = (comic) => {
         navigation.navigate('ComicDetailScreen',{comic})
@@ -29,6 +29,9 @@ const CharacterDetail = ({ route,navigation }) => {
     const handlefavourite = () => {
         setIsFavourite(true)
         database().ref(`users/${currentUser}/favourites`).push(character)
+    }
+    const handleStoryDetail = (story) => {
+        navigation.navigate('SeriesDetailScreen',{story})
     }
     return (
         <View style={styles.container} >
