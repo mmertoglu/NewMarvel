@@ -6,8 +6,10 @@ import auth from '@react-native-firebase/auth'
 import StarterCharacterCard from '../../components/StarterCharacterCard/StarterCharacterCard'
 import styles from './Favourites.style'
 import FavouriteCard from '../../components/FavouriteCard/FavouriteCard'
+import RemoveModalComponent from '../../components/RemoveModalComponent/RemoveModalComponent'
 const currentUser = auth().currentUser.uid
 const Favourites = () => {
+    const [isModalVisible, setisModalVisible] = useState(false)
     const [data, setData] = useState([])
     useEffect(() => {
         database().ref('users/' + currentUser + '/favourites').on('value', snapshot => {
@@ -17,27 +19,28 @@ const Favourites = () => {
             console.log(data)
         })
     }, [])
-    const handleRemove = (character) => {
-        Alert.alert(
-            'MARVEL',
-            'Do you want to Remove',
-            [
-                {
-                    text: 'Cancel',
-                    onPress: () => { }
-                },
-                {
-                    text: 'Remove',
-                    onPress: () => {
-                        const filteredList = data.filter(x => x != character)
-                        setData(filteredList)
-                        database().ref('users/' + currentUser + '/favourites/' + character.id).remove()
-                    }
-                }
-            ]
-        )
+    const handleRemove = async (character) => {
+        setisModalVisible(true)
     }
-    const renderItem = ({ item }) => <FavouriteCard character={item} handleRemove={handleRemove} />
+    const handleRemoveItem = (character) => {
+        try {
+            const filteredList = data.filter(x => x != character)
+            setData(filteredList)
+            database().ref('users/' + currentUser + '/favourites/' + character.id).remove()
+            setisModalVisible(false)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+    const renderItem = ({ item }) => <FavouriteCard
+        character={item} 
+        handleRemove={handleRemove} 
+        isModalVisible={isModalVisible}
+        RemoveItem={handleRemoveItem} 
+        CloseModal={() => setisModalVisible(false)}
+        />
 
     return (
         <View style={styles.container} >
@@ -46,6 +49,7 @@ const Favourites = () => {
                 data={data}
                 renderItem={renderItem}
             />
+            
         </View>
     )
 }
