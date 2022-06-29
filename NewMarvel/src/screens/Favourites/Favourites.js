@@ -7,8 +7,9 @@ import StarterCharacterCard from '../../components/StarterCharacterCard/StarterC
 import styles from './Favourites.style'
 import FavouriteCard from '../../components/FavouriteCard/FavouriteCard'
 import RemoveModalComponent from '../../components/RemoveModalComponent/RemoveModalComponent'
-const currentUser = auth().currentUser.uid
+
 const Favourites = () => {
+    const currentUser = auth().currentUser.uid
     const [isModalVisible, setisModalVisible] = useState(false)
     const [data, setData] = useState([])
     useEffect(() => {

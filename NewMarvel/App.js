@@ -63,11 +63,18 @@ const CharacterStack = () => {
 }
 
 function App () {
+  const [userSession,setUserSession] = React.useState();
+  useEffect(()=>{
+    auth().onUserChanged(user => {
+      setUserSession(!!user)
+    })
+  },[])
+
   return(
     <NavigationContainer>
       <StatusBar backgroundColor={'red'} />
       <Stack.Navigator screenOptions={{headerShown:false}} >
-        {!currentUser &&  <Stack.Screen name="LoginScreen" component={Login} /> }
+        {!userSession &&  <Stack.Screen name="LoginScreen" component={Login} /> }
         <Stack.Screen name="HomeStack" component={AppTabStack} />
         <Stack.Screen name="EmailLoginScreen" component={EmailLogin} />
         <Stack.Screen name="EmailSignUpScreen" component={SignUp} />

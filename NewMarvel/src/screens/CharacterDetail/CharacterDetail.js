@@ -33,6 +33,7 @@ const CharacterDetail = ({ route,navigation }) => {
     const handleStoryDetail = (story) => {
         navigation.navigate('SeriesDetailScreen',{story})
     }
+
     return (
         <View style={styles.container} >
             <TouchableOpacity onPress={handlefavourite} style={styles.icon_container} >

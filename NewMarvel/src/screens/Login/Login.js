@@ -13,7 +13,9 @@ const Login = ({navigation}) => {
     try {
       const { idToken } = await GoogleSignin.signIn();
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-       auth().signInWithCredential(googleCredential);
+     await  auth().signInWithCredential(googleCredential).then(cred => {
+      user_email = cred.user.email
+     })
        navigation.navigate('HomeStack')
     } catch (error) {
       console.log(error)
@@ -33,7 +35,7 @@ const Login = ({navigation}) => {
           throw'Something went wrong obtaining access token';
         }
         const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
-         auth().signInWithCredential(facebookCredential);
+        await auth().signInWithCredential(facebookCredential);
          navigation.navigate('HomeStack')
        } catch (error) {
         console.log(error)

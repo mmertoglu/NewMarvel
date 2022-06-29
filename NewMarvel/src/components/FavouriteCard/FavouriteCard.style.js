@@ -68,5 +68,10 @@ export default StyleSheet.create({
         marginRight:14,
         borderRadius:8,
         elevation:10
+    },
+    text:{
+        color:'white',
+        fontSize:16,
+        fontFamily:'dirtyoldtown'
     }
 })
