@@ -18,7 +18,7 @@ const RemoveModalComponent = ({isModalVisible,CloseModal,handleRemoveItem}) => {
                 <Text style={styles.header_text} >Do you want to remove this character?</Text>
                <View style={{flexDirection:'row',alignSelf:'center',marginTop:10}} >
                <TouchableOpacity onPress={handleRemoveItem} style={styles.ok_container}>
-                <Text style={styles.ok_text} >Ok</Text>
+                <Text style={styles.ok_text} >Remove</Text>
                 </TouchableOpacity> 
                 <TouchableOpacity onPress={CloseModal} style={styles.ok_container}>
                 <Text style={styles.ok_text} >Cancel</Text>
