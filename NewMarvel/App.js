@@ -14,9 +14,11 @@ import Login from "./src/screens/Login/Login";
 import EmailLogin from "./src/screens/EmailLogin/EmailLogin";
 import SignUp from "./src/screens/SignUp/SignUp";
 import SeriesDetail from "./src/screens/SeriesDetail/SeriesDetail";
+import auth from '@react-native-firebase/auth';
+import {GoogleSignin} from '@react-native-google-signin/google-signin'
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator();
-
+const currentUser = auth().currentUser
 const CharacterStack = () => {
   return(
     <Stack.Navigator screenOptions={{headerShown:false}} >
@@ -65,10 +67,10 @@ function App () {
     <NavigationContainer>
       <StatusBar backgroundColor={'red'} />
       <Stack.Navigator screenOptions={{headerShown:false}} >
-        <Stack.Screen name="LoginScreen" component={Login} />
+        {!currentUser &&  <Stack.Screen name="LoginScreen" component={Login} /> }
+        <Stack.Screen name="HomeStack" component={AppTabStack} />
         <Stack.Screen name="EmailLoginScreen" component={EmailLogin} />
         <Stack.Screen name="EmailSignUpScreen" component={SignUp} />
-        <Stack.Screen name="HomeStack" component={AppTabStack} />
       </Stack.Navigator>
     </NavigationContainer>
   )
