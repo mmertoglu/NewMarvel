@@ -57,5 +57,11 @@ export default StyleSheet.create({
         fontWeight:'bold',
         alignSelf:'center',
         marginTop:10
+    },
+    back_icon:{
+        position:'absolute',
+        top:20,
+        left:20,
+        zIndex:1
     }
 })

@@ -5,11 +5,12 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import useFetch from "../../useFetch/useFetch";
 import AuthorCard from "../../components/AuthorCard/AuthorCard";
 import ComicDetailCharacterCard from "../../components/ComicDetailCharacterCard/ComicDetailCharacterCard";
+import IonIcons from 'react-native-vector-icons/Ionicons'
 
 const api_key = 'f10953d37850ea4cfdb4f98a0912cd4e'
 const hash = 'f9acd06a0b64e2acd93d4a4b53145d48'
 
-const SeriesDetail = ({ route }) => {
+const SeriesDetail = ({ route,navigation }) => {
     const [iconName,setIconName] = useState('caret-down')
     const [lines, setLines] = useState(5)
     const { story } = route.params;
@@ -24,8 +25,12 @@ const SeriesDetail = ({ route }) => {
     }
     const renderAuthors = ({item}) => <AuthorCard author={item}  />
     const renderCharacters = ({item}) => <ComicDetailCharacterCard character={item} />
+    const goBack = () => {
+        navigation.goBack()
+    }
     return (
         <View style={styles.container} >
+           <IonIcons name="arrow-back" color={'white'} style={styles.back_icon} size={30} onPress={goBack} />
            {story.thumbnail.path == null ? null :
              <Image source={{ uri: story.thumbnail.path + '.jpg' }} style={styles.image} resizeMode='stretch' />}
             <View style={styles.opacity_container} ></View>
