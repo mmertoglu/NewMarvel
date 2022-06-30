@@ -6,40 +6,40 @@ export default StyleSheet.create({
         alignItems: 'center',
         height: 80,
         flexDirection: 'row',
-        elevation:4,
-        borderColor:'white',
-        borderWidth:0.5,
+        elevation:8,
         alignItems:'center',
         alignSelf:'center',
         width:'95%',
         marginVertical:20,
-        borderTopLeftRadius:100,
-        borderBottomLeftRadius:100,
+        //borderTopLeftRadius:100,//
+       // borderBottomLeftRadius:100,
         paddingLeft:10,
         justifyContent:'space-between',
         elevation:8,
+        backgroundColor:'orange',
+        borderRadius:16
         
     },
     image: {
         width: 60,
         height: 60,
-        borderRadius: 50,
+        borderRadius: 8,
     },
     text: {
         alignSelf: 'center',
-        fontWeight: 'bold',
         color: 'white',
         fontSize: 18,
-        fontStyle: 'italic',
         width:160,
-        alignSelf:'center'
+        alignSelf:'center',
+        marginRight:100,
+        fontFamily:'Ubuntu-Bold'
     },
 
     text_container: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         width:200,
-        paddingHorizontal:10,
+    
         marginRight:20,
         paddingVertical:5,
         borderRadius:8,

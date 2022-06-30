@@ -10,7 +10,7 @@ const StarterCharacterCard = ({character,handleDetail}) => {
         }
             <View style={styles.text_container} >
             <Text numberOfLines={1}  style={styles.text} >{character.name}</Text>
-            <Entypo name="shield" size={30} color='white' />
+            <Entypo name="shield" size={30} color='white' style={{marginRight:20}} />
             </View>
         </TouchableOpacity>
     )

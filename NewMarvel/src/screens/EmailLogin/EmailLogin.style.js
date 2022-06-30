@@ -19,5 +19,10 @@ export default StyleSheet.create({
     account_text:{
         color:'white',
         marginTop:50
+    },
+    back_icon:{
+        position:'absolute',
+        top:20,
+        left:20
     }
 })

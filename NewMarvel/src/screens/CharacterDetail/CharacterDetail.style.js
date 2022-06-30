@@ -42,5 +42,11 @@ export default StyleSheet.create({
         width:50,
         zIndex:1,
         
+    },
+    back_icon:{
+        position:'absolute',
+        top:20,
+        left:20,
+        zIndex:1
     }
 })

@@ -4,6 +4,7 @@ import Input from "../../components/Input/Input";
 import LoginButton from "../../components/LoginButton/LoginButton";
 import styles from './EmailLogin.style'
 import auth from '@react-native-firebase/auth'
+import IonIcons from 'react-native-vector-icons/Ionicons'
 const EmailLogin = ({navigation}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -22,8 +23,12 @@ const EmailLogin = ({navigation}) => {
     const goSignUp = () => {
         navigation.navigate('EmailSignUpScreen')
     }
+    const goBack = () => [
+        navigation.goBack()
+    ]
     return (
         <View style={styles.container} >
+            <IonIcons name="arrow-back" color={'white'} style={styles.back_icon} size={30} onPress={goBack} />
             <Image source={{ uri: 'https://1000logos.net/wp-content/uploads/2021/06/Marvel-Comics-logo.png' }} style={styles.image} />
             <View style={styles.input_container} >
             <Input

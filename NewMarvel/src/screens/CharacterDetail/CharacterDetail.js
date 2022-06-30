@@ -7,6 +7,7 @@ import CharacterStoryCard from '../../components/CharacterStoryCard/CharacterSto
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import database from '@react-native-firebase/database'
 import auth from '@react-native-firebase/auth'
+import IonIcons from 'react-native-vector-icons/Ionicons'
 const api_key = 'f10953d37850ea4cfdb4f98a0912cd4e'
 const hash = 'f9acd06a0b64e2acd93d4a4b53145d48'
 
@@ -33,9 +34,12 @@ const CharacterDetail = ({ route,navigation }) => {
     const handleStoryDetail = (story) => {
         navigation.navigate('SeriesDetailScreen',{story})
     }
-
+    const goBack = () => [
+        navigation.goBack()
+    ]
     return (
         <View style={styles.container} >
+            <IonIcons name="arrow-back" color={'white'} style={styles.back_icon} size={30} onPress={goBack} />
             <TouchableOpacity onPress={handlefavourite} style={styles.icon_container} >
             <FontAwesome5 name="heart" size={30} color='black' solid={isFavourite} />
             </TouchableOpacity>
