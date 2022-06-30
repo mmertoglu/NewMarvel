@@ -11,6 +11,6 @@ export default StyleSheet.create({
         alignSelf:'center',
         marginTop:10,
         fontSize:18,
-        fontFamily:'Righteous-Regular'
+        fontFamily:'Montserrat-ExtraBold'
     }
 })
