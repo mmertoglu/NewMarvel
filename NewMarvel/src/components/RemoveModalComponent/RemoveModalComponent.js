@@ -5,6 +5,7 @@ import styles from './RemoveModalComponent.style'
 const RemoveModalComponent = ({isModalVisible,CloseModal,handleRemoveItem}) => {
     return(
         <Modal 
+        backdropOpacity={0.3}
         animationInTiming={600}
         animationOutTiming={600}
         style={styles.modal}
